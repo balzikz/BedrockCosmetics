@@ -1,40 +1,70 @@
-<modelVersion>4.0.0</modelVersion>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-<groupId>com.balzikz</groupId>
-<artifactId>BedrockCosmetics</artifactId>
-<version>1.0.0-SNAPSHOT</version>
-<name>BedrockCosmetics</name>
-<packaging>jar</packaging>
+    <modelVersion>4.0.0</modelVersion>
 
-<properties>
-    <maven.compiler.release>17</maven.compiler.release>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-</properties>
+    <groupId>me.balzikz</groupId>
+    <artifactId>bedrockcosmetics</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
 
-<repositories>
-    <repository>
-        <id>repo-lanink-cn</id>
-        <url>https://repo.lanink.cn/repository/maven-public/</url>
-    </repository>
-</repositories>
+    <name>BedrockCosmetics</name>
+    <description>Cosmetics plugin for Nukkit-MOT</description>
 
-<dependencies>
-    <dependency>
-        <groupId>cn.nukkit</groupId>
-        <artifactId>Nukkit</artifactId>
-        <version>MOT-SNAPSHOT</version>
-        <scope>provided</scope>
-    </dependency>
-</dependencies>
+    <properties>
+        <java.version>17</java.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
 
-<build>
-    <defaultGoal>clean package</defaultGoal>
-    <finalName>BedrockCosmetics</finalName>
+    <repositories>
+        <repository>
+            <id>repo-lanink-cn</id>
+            <url>https://repo.lanink.cn/repository/maven-public/</url>
+        </repository>
+    </repositories>
 
-    <resources>
-        <resource>
-            <directory>src/main/resources</directory>
-            <filtering>true</filtering>
-        </resource>
-    </resources>
-</build>
+    <dependencies>
+        <dependency>
+            <groupId>cn.nukkit</groupId>
+            <artifactId>Nukkit</artifactId>
+            <version>MOT-SNAPSHOT</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <finalName>BedrockCosmetics</finalName>
+
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+
+        <plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.11.0</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.4.1</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
